@@ -1,19 +1,14 @@
 #########MEAN METHYLATION VS CHROMOSOME PLOTS (PER REGION AND WHOLE GENOME)
-#goals: Creat barplots with mean meth on y-axis and chromosome on x-axis. Use only hyper and hypo meth probes from each tumor type,
-#and find which ones are unique to each disease. Also identfy common hypo and hyper meth probes for both test and control samples.
-#Extract ehancers, promoters, and gene body probes from these lists. Create plots that look at all hypo and hyper probes for each tumor
-#type, and plots that look only at the enahncer hypo and hyper probes, same for body and promoters.
-
 ######EXTRACTING COMMON PROBES FOR HYPO AND HYPER#####
 
 ##Read in masterfiles##
-test_annot <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/test_samples_diffmeth_annot_mvalues_masterfile.csv")
-control_annot <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/control_samples_diffmeth_annot_mvalues_masterfile.csv")
+test_annot <- read.csv("C:/.csv")
+control_annot <- read.csv("C:/.csv")
 
 ######HYPOMETHYLATED PROBES ONLY#######
 ####TEST PROBES#####
 ##Read in all hypomethylated test probes lists##
-subsetted_probes_list <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/Hypomethylated Probes/test_samples_hypomethylated_probes_list.csv")
+subsetted_probes_list <- read.csv("C:/.csv")
 subsetted_probes_list_Astro <- subsetted_probes_list$Astrocytoma
 subsetted_probes_list_AML <- subsetted_probes_list$AML
 subsetted_probes_list_Chol <- subsetted_probes_list$Cholangiocarcinoma
@@ -31,28 +26,8 @@ test_probes_common_hypo$ID <- intersect(test_probes_common_hypo$ID, subsetted_pr
 ##Merge with annotated M-value files and write to csv
 test_probes_common_hypo_annot <- merge(test_probes_common_hypo, test_WG, by="ID")
 dim(test_probes_common_hypo_annot)
-setwd("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/Hypomethylated Probes/")
-write.csv(test_probes_common_hypo_annot, file="test_common_probes_hypo_annot.csv")
-
-####CONTROL PROBES####
-##Read in all hypomethylated control probes lists##
-subsetted_probes_list_2 <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/Hypomethylated Probes/control_samples_hypomethylated_probes_list.csv")
-subsetted_probes_list_Blood <- subsetted_probes_list_2$Blood
-subsetted_probes_list_GBM <- subsetted_probes_list_2$GBM
-subsetted_probes_list_Neuro <- subsetted_probes_list_2$Neurocytoma
-subsetted_probes_list_PAstro <- subsetted_probes_list_2$Pilocytic_Astrocytoma
-subsetted_probes_list_SUDEP <- subsetted_probes_list_2$SUDEP
-##Use intersect function to extract probes that are common to all 5 lists
-common_probes_control_hypo=NULL
-common_probes_control_hypo$ID <- intersect(subsetted_probes_list_Blood, subsetted_probes_list_GBM)
-common_probes_control_hypo$ID <- intersect(common_probes_control_hypo$ID, subsetted_probes_list_Neuro)
-common_probes_control_hypo$ID <- intersect(common_probes_control_hypo$ID, subsetted_probes_list_PAstro) 
-common_probes_control_hypo$ID <- intersect(common_probes_control_hypo$ID, subsetted_probes_list_SUDEP) 
-##Merge with annotated M-value files and write to csv
-common_probes_control_hypo_annot <- merge(common_probes_control_hypo, control_WG, by="ID")
-dim(common_probes_control_hypo_annot)
-setwd("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/Hypomethylated Probes/")
-write.csv(common_probes_control_hypo_annot, file="control_common_probes_hypo_annot.csv")
+setwd("C:/")
+write.csv(test_probes_common_hypo_annot, file=".csv")
 
 
 
@@ -60,7 +35,7 @@ write.csv(common_probes_control_hypo_annot, file="control_common_probes_hypo_ann
 
 ####TEST PROBES#####
 ##Read in all hypermethylated test probes lists##
-subsetted_probes_list <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/Hypermethylated Probes/test_samples_hypermethylated_probes_list.csv")
+subsetted_probes_list <- read.csv("C:/.csv")
 subsetted_probes_list_Astro <- subsetted_probes_list$Astrocytoma
 subsetted_probes_list_AML <- subsetted_probes_list$AML
 subsetted_probes_list_Chol <- subsetted_probes_list$Cholangiocarcinoma
@@ -77,27 +52,9 @@ test_probes_common_hyper$ID <- intersect(test_probes_common_hyper$ID, subsetted_
 #DONT need to use brain for intersections above
 ##Merge with annotated M-value files and write to csv
 test_probes_common_hyper_annot <- merge(test_probes_common_hyper, test_WG, by="ID")
-setwd("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/Hypermethylated Probes/")
-write.csv(test_probes_common_hyper_annot, file="test_common_probes_hyper_annot.csv")
+setwd("C:/")
+write.csv(test_probes_common_hyper_annot, file=".csv")
 
-####CONTROL PROBES####
-##Read in all hypermethylated control probes lists##
-subsetted_probes_list_2 <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/Hypermethylated Probes/control_samples_hypermethylated_probes_list.csv")
-subsetted_probes_list_Blood <- subsetted_probes_list_2$Blood
-subsetted_probes_list_GBM <- subsetted_probes_list_2$GBM
-subsetted_probes_list_Neuro <- subsetted_probes_list_2$Neurocytoma
-subsetted_probes_list_PAstro <- subsetted_probes_list_2$Pilocytic_Astrocytoma
-subsetted_probes_list_SUDEP <- subsetted_probes_list_2$SUDEP
-##Use intersect function to extract probes that are common to all 5 lists
-common_probes_control_hyper=NULL
-common_probes_control_hyper$ID <- intersect(subsetted_probes_list_Blood, subsetted_probes_list_GBM)
-common_probes_control_hyper$ID <- intersect(common_probes_control_hyper$ID, subsetted_probes_list_Neuro)
-common_probes_control_hyper$ID <- intersect(common_probes_control_hyper$ID, subsetted_probes_list_PAstro) 
-common_probes_control_hyper$ID <- intersect(common_probes_control_hyper$ID, subsetted_probes_list_SUDEP) 
-##Merge with annotated M-value files and write to csv
-common_probes_control_hyper_annot <- merge(common_probes_control_hyper, control_WG, by="ID")
-setwd("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/Hypermethylated Probes/")
-write.csv(common_probes_control_hyper_annot, file="control_common_probes_hyper_annot.csv")
 
 
 
@@ -105,13 +62,9 @@ write.csv(common_probes_control_hyper_annot, file="control_common_probes_hyper_a
 
 ##Read in probe lists and annotated m-value masterfiles
 test_probes_list_hypo <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/Hypomethylated Probes/test_samples_hypomethylated_probes_list.csv")
-control_probes_list_hypo <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/Hypomethylated Probes/control_samples_hypomethylated_probes_list.csv")
 test_probes_list_hyper <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/Hypermethylated Probes/test_samples_hypermethylated_probes_list.csv")
-control_probes_list_hyper <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/Hypermethylated Probes/control_samples_hypermethylated_probes_list.csv")
 names(test_probes_list_hypo)
-names(control_probes_list_hypo)
 test_annot <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Test Samples - Differential Methylation/Using M Values/test_samples_diffmeth_annot_mvalues_masterfile.csv")
-control_annot <- read.csv("C:/Users/Ramona Bledea/Documents/PROJECT RESULTS/IDH Tumor Project/Results/Control Samples - Differential Methylation/Using M Values/control_samples_diffmeth_annot_mvalues_masterfile.csv")
 
 #Use setdiff(x,y) to determined probes that are in x but not in y
 GBM_hypo_unique=NULL
@@ -775,166 +728,6 @@ common_test_B_hyper$Tumor_Type <- "Common Probes, IDH Mutant"
 common_test_B_hyper$Gene_Region <- "Body"
 common_test_B_hyper <- as.data.frame(common_test_B_hyper)
 
-##Whole Genome
-AML_WG_hypo=NULL
-AML_WG_hypo$Chromosome <- AML_hypo_unique[ ,99]
-AML_WG_hypo$Mean_Methylation <- rowMeans(AML_hypo_unique[ ,28:48], na.rm=TRUE)
-AML_WG_hypo$Tumor_Type <- "AML"
-AML_WG_hypo$Gene_Region <- "All Hypomethylated"
-AML_WG_hypo <- as.data.frame(AML_WG_hypo)
-Astro_WG_hypo=NULL
-Astro_WG_hypo$Chromosome <- Astro_hypo_unique[ ,99]
-Astro_WG_hypo$Mean_Methylation <- rowMeans(Astro_hypo_unique[ ,c(4:9, 49:73)], na.rm=TRUE)
-Astro_WG_hypo$Tumor_Type <- "Astrocytoma"
-Astro_WG_hypo$Gene_Region <- "All Hypomethylated"
-Astro_WG_hypo <- as.data.frame(Astro_WG_hypo)
-Chol_WG_hypo=NULL
-Chol_WG_hypo$Chromosome <- Chol_hypo_unique[ ,99]
-Chol_WG_hypo$Mean_Methylation <- rowMeans(Chol_hypo_unique[ ,74:82], na.rm=TRUE)
-Chol_WG_hypo$Tumor_Type <- "Cholangiocarcinoma"
-Chol_WG_hypo$Gene_Region <- "All Hypomethylated"
-Chol_WG_hypo <- as.data.frame(Chol_WG_hypo)
-Breast_WG_hypo=NULL
-Breast_WG_hypo$Chromosome <- Breast_hypo_unique[ ,99]
-Breast_WG_hypo$Mean_Methylation <- rowMeans(Breast_hypo_unique[ ,10:14], na.rm=TRUE)
-Breast_WG_hypo$Tumor_Type <- "Breast Cancer"
-Breast_WG_hypo$Gene_Region <- "All Hypomethylated"
-Breast_WG_hypo <- as.data.frame(Breast_WG_hypo)
-Oligo_WG_hypo=NULL
-Oligo_WG_hypo$Chromosome <- Oligo_hypo_unique[ ,99]
-Oligo_WG_hypo$Mean_Methylation <- rowMeans(Oligo_hypo_unique[ ,c(15:19, 83:97)], na.rm=TRUE)
-Oligo_WG_hypo$Tumor_Type <- "Oligodendroglioma"
-Oligo_WG_hypo$Gene_Region <- "All Hypomethylated"
-Oligo_WG_hypo <- as.data.frame(Oligo_WG_hypo)
-SNUC_WG_hypo=NULL
-SNUC_WG_hypo$Chromosome <- SNUC_hypo_unique[ ,99]
-SNUC_WG_hypo$Mean_Methylation <- rowMeans(SNUC_hypo_unique[ ,20:27], na.rm=TRUE)
-SNUC_WG_hypo$Tumor_Type <- "SNUC"
-SNUC_WG_hypo$Gene_Region <- "All Hypomethylated"
-SNUC_WG_hypo <- as.data.frame(SNUC_WG_hypo)
-Blood_WG_hypo=NULL
-Blood_WG_hypo$Chromosome <- Blood_hypo_unique[ ,56]
-Blood_WG_hypo$Mean_Methylation <- rowMeans(Blood_hypo_unique[ ,4:35], na.rm=TRUE)
-Blood_WG_hypo$Tumor_Type <- "Normal Blood"
-Blood_WG_hypo$Gene_Region <- "All Hypomethylated"
-Blood_WG_hypo <- as.data.frame(Blood_WG_hypo)
-PAstro_WG_hypo=NULL
-PAstro_WG_hypo$Chromosome <- PAstro_hypo_unique[ ,56]
-PAstro_WG_hypo$Mean_Methylation <- rowMeans(PAstro_hypo_unique[ ,36:41], na.rm=TRUE)
-PAstro_WG_hypo$Tumor_Type <- "Pilocytic Astrocytoma"
-PAstro_WG_hypo$Gene_Region <- "All Hypomethylated"
-PAstro_WG_hypo <- as.data.frame(PAstro_WG_hypo)
-Neuro_WG_hypo=NULL
-Neuro_WG_hypo$Chromosome <- Neuro_hypo_unique[ ,56]
-Neuro_WG_hypo$Mean_Methylation <- rowMeans(Neuro_hypo_unique[ ,42:44], na.rm=TRUE)
-Neuro_WG_hypo$Tumor_Type <- "Neurocytoma"
-Neuro_WG_hypo$Gene_Region <- "All Hypomethylated"
-Neuro_WG_hypo <- as.data.frame(Neuro_WG_hypo)
-GBM_WG_hypo=NULL
-GBM_WG_hypo$Chromosome <- GBM_hypo_unique[ ,56]
-GBM_WG_hypo$Mean_Methylation <- rowMeans(GBM_hypo_unique[ ,45:50], na.rm=TRUE)
-GBM_WG_hypo$Tumor_Type <- "GBM"
-GBM_WG_hypo$Gene_Region <- "All Hypomethylated"
-GBM_WG_hypo <- as.data.frame(GBM_WG_hypo)
-SUDEP_WG_hypo=NULL
-SUDEP_WG_hypo$Chromosome <- SUDEP_hypo_unique[ ,56]
-SUDEP_WG_hypo$Mean_Methylation <- rowMeans(SUDEP_hypo_unique[ ,51:54], na.rm=TRUE)
-SUDEP_WG_hypo$Tumor_Type <- "SUDEP"
-SUDEP_WG_hypo$Gene_Region <- "All Hypomethylated"
-SUDEP_WG_hypo <- as.data.frame(SUDEP_WG_hypo)
-common_control_WG_hypo=NULL
-common_control_WG_hypo$Chromosome <- common_probes_control_hypo_annot[ ,56]
-common_control_WG_hypo$Mean_Methylation <- rowMeans(common_probes_control_hypo_annot[ ,4:54], na.rm=TRUE)
-common_control_WG_hypo$Tumor_Type <- "Common Probes, IDH WT"
-common_control_WG_hypo$Gene_Region <- "All Hypomethylated"
-common_control_WG_hypo <- as.data.frame(common_control_WG_hypo)
-common_test_WG_hypo=NULL
-common_test_WG_hypo$Chromosome <- common_probes_test_hypo_annot[ ,98]
-common_test_WG_hypo$Mean_Methylation <- rowMeans(common_probes_test_hypo_annot[ ,3:96], na.rm=TRUE)
-common_test_WG_hypo$Tumor_Type <- "Common Probes, IDH Mutant"
-common_test_WG_hypo$Gene_Region <- "All Hypomethylated"
-common_test_WG_hypo <- as.data.frame(common_test_WG_hypo)
-
-AML_WG_hyper=NULL
-AML_WG_hyper$Chromosome <- AML_hyper_unique[ ,99]
-AML_WG_hyper$Mean_Methylation <- rowMeans(AML_hyper_unique[ ,28:48], na.rm=TRUE)
-AML_WG_hyper$Tumor_Type <- "AML"
-AML_WG_hyper$Gene_Region <- "All Hypermethylated"
-AML_WG_hyper <- as.data.frame(AML_WG_hyper)
-Astro_WG_hyper=NULL
-Astro_WG_hyper$Chromosome <- Astro_hyper_unique[ ,99]
-Astro_WG_hyper$Mean_Methylation <- rowMeans(Astro_hyper_unique[ ,c(4:9), (49:73)], na.rm=TRUE)
-Astro_WG_hyper$Tumor_Type <- "Astrocytoma"
-Astro_WG_hyper$Gene_Region <- "All Hypermethylated"
-Astro_WG_hyper <- as.data.frame(Astro_WG_hyper)
-Chol_WG_hyper=NULL
-Chol_WG_hyper$Chromosome <- Chol_hyper_unique[ ,99]
-Chol_WG_hyper$Mean_Methylation <- rowMeans(Chol_hyper_unique[ ,74:82], na.rm=TRUE)
-Chol_WG_hyper$Tumor_Type <- "Cholangiocarcinoma"
-Chol_WG_hyper$Gene_Region <- "All Hypermethylated"
-Chol_WG_hyper <- as.data.frame(Chol_WG_hyper)
-Breast_WG_hyper=NULL
-Breast_WG_hyper$Chromosome <- Breast_hyper_unique[ ,99]
-Breast_WG_hyper$Mean_Methylation <- rowMeans(Breast_hyper_unique[ ,10:14], na.rm=TRUE)
-Breast_WG_hyper$Tumor_Type <- "Breast Cancer"
-Breast_WG_hyper$Gene_Region <- "All Hypermethylated"
-Breast_WG_hyper <- as.data.frame(Breast_WG_hyper)
-Oligo_WG_hyper=NULL
-Oligo_WG_hyper$Chromosome <- Oligo_hyper_unique[ ,99]
-Oligo_WG_hyper$Mean_Methylation <- rowMeans(Oligo_hyper_unique[ ,c(15:19, 83:97)], na.rm=TRUE)
-Oligo_WG_hyper$Tumor_Type <- "Oligodendroglioma"
-Oligo_WG_hyper$Gene_Region <- "All Hypermethylated"
-Oligo_WG_hyper <- as.data.frame(Oligo_WG_hyper)
-SNUC_WG_hyper=NULL
-SNUC_WG_hyper$Chromosome <- SNUC_hyper_unique[ ,99]
-SNUC_WG_hyper$Mean_Methylation <- rowMeans(SNUC_hyper_unique[ ,20:27], na.rm=TRUE)
-SNUC_WG_hyper$Tumor_Type <- "SNUC"
-SNUC_WG_hyper$Gene_Region <- "All Hypermethylated"
-SNUC_WG_hyper <- as.data.frame(SNUC_WG_hyper)
-Blood_WG_hyper=NULL
-Blood_WG_hyper$Chromosome <- Blood_hyper_unique[ ,56]
-Blood_WG_hyper$Mean_Methylation <- rowMeans(Blood_hyper_unique[ ,4:35], na.rm=TRUE)
-Blood_WG_hyper$Tumor_Type <- "Normal Blood"
-Blood_WG_hyper$Gene_Region <- "All Hypermethylated"
-Blood_WG_hyper <- as.data.frame(Blood_WG_hyper)
-PAstro_WG_hyper=NULL
-PAstro_WG_hyper$Chromosome <- PAstro_hyper_unique[ ,56]
-PAstro_WG_hyper$Mean_Methylation <- rowMeans(PAstro_hyper_unique[ ,36:41], na.rm=TRUE)
-PAstro_WG_hyper$Tumor_Type <- "Pilocytic Astrocytoma"
-PAstro_WG_hyper$Gene_Region <- "All Hypermethylated"
-PAstro_WG_hyper <- as.data.frame(PAstro_WG_hyper)
-Neuro_WG_hyper=NULL
-Neuro_WG_hyper$Chromosome <- Neuro_hyper_unique[ ,56]
-Neuro_WG_hyper$Mean_Methylation <- rowMeans(Neuro_hyper_unique[ ,42:44], na.rm=TRUE)
-Neuro_WG_hyper$Tumor_Type <- "Neurocytoma"
-Neuro_WG_hyper$Gene_Region <- "All Hypermethylated"
-Neuro_WG_hyper <- as.data.frame(Neuro_WG_hyper)
-GBM_WG_hyper=NULL
-GBM_WG_hyper$Chromosome <- GBM_hyper_unique[ ,56]
-GBM_WG_hyper$Mean_Methylation <- rowMeans(GBM_hyper_unique[ ,45:50], na.rm=TRUE)
-GBM_WG_hyper$Tumor_Type <- "GBM"
-GBM_WG_hyper$Gene_Region <- "All Hypermethylated"
-GBM_WG_hyper <- as.data.frame(GBM_WG_hyper)
-SUDEP_WG_hyper=NULL
-SUDEP_WG_hyper$Chromosome <- SUDEP_hyper_unique[ ,56]
-SUDEP_WG_hyper$Mean_Methylation <- rowMeans(SUDEP_hyper_unique[ ,51:54], na.rm=TRUE)
-SUDEP_WG_hyper$Tumor_Type <- "SUDEP"
-SUDEP_WG_hyper$Gene_Region <- "All Hypermethylated"
-SUDEP_WG_hyper <- as.data.frame(SUDEP_WG_hyper)
-common_control_WG_hyper=NULL
-common_control_WG_hyper$Chromosome <- common_probes_control_hyper_annot[ ,56]
-common_control_WG_hyper$Mean_Methylation <- rowMeans(common_probes_control_hyper_annot[ ,4:54], na.rm=TRUE)
-common_control_WG_hyper$Tumor_Type <- "Common Probes, IDH WT"
-common_control_WG_hyper$Gene_Region <- "All Hypermethylated"
-common_control_WG_hyper <- as.data.frame(common_control_WG_hyper)
-common_test_WG_hyper=NULL
-common_test_WG_hyper$Chromosome <- common_probes_test_hyper_annot[ ,98]
-common_test_WG_hyper$Mean_Methylation <- rowMeans(common_probes_test_hyper_annot[ ,3:96], na.rm=TRUE)
-common_test_WG_hyper$Tumor_Type <- "Common Probes, IDH Mutant"
-common_test_WG_hyper$Gene_Region <- "All Hypermethylated"
-common_test_WG_hyper <- as.data.frame(common_test_WG_hyper)
-
-#to ALL of the above, it would be good to add to the dataframes the gene name column, pos column, and probe ID column
 
 ##Find the mean of the Mean_Methylation column values in each data frame, for each chromosome
 #subset for each chromosome
