@@ -142,3 +142,12 @@ png(file=paste(outDir,"/Heatmap(Top 10000) - IDH Mut, legend topleft.png", sep="
 heatmap.2(gset.funnorm.M[row.names(dmp[1:10000,]),],trace = 'none',key.title="Methylation", labRow = FALSE, labCol=FALSE, cexCol = 1.2, scale = 'column',col = cell_colors,cexRow = 0.52,key.xlab = "Z-Score",main = "Heatmap (Top 10000)",ColSideColors = pal[factor(targets$Sample_Group)])
 legend("topleft", legend=levels(f), col=pal[factor(levels(f))], pch=15,cex = 0.5)
 dev.off()
+
+###get methylated and unmethylated signal intensities###
+setwd("C:\\")
+MSet <- preprocessRaw(RGSet)
+MSet
+meth_intensities <- getMeth(MSet)
+write.csv(meth_intensities, file="meth_intensities.csv")
+unmeth_intensities <- getUnmeth(MSet)
+write.csv(unmeth_intensities, file="unmeth_intensities.csv")
