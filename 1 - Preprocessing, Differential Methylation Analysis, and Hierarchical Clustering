@@ -151,3 +151,8 @@ meth_intensities <- getMeth(MSet)
 write.csv(meth_intensities, file="meth_intensities.csv")
 unmeth_intensities <- getUnmeth(MSet)
 write.csv(unmeth_intensities, file="unmeth_intensities.csv")
+
+
+###get the mean detection p values per sample, per probe###
+setwd("C:\\")
+write.csv(detP, file="mean_detection_pvalues.csv")
